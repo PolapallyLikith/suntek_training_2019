@@ -1,0 +1,49 @@
+#include <stdio.h>
+
+int main()
+{
+    int arr[100], b[100];
+    int size, i, j;    
+    printf("Enter size of array: ");
+    scanf("%d", &size);    
+    printf("Enter elements in array: ");
+    for(i=0; i<size; i++)
+    {
+        scanf("%d", &arr[i]);
+
+        
+        b[i] = -1;
+    }
+    occurance(size,arr,b);
+
+    return 0;
+}
+int occurance(int size,int arr[],int b[])
+{
+    int i,j,count;
+        for(i=0; i<size; i++)
+    {
+        count = 1;
+        for(j=i+1; j<size; j++)
+        {
+            
+            if(arr[i]==arr[j])
+            {
+                count++;       
+                b[j] = 0;
+            }
+        }   
+        if(b[i] != 0)
+        {
+            b[i] = count;
+        }
+    }
+    printf("\noccurance of all elements of array : \n");
+    for(i=0; i<size; i++)
+    {
+        if(b[i] != 0)
+        {
+            printf("%d occur %d times \n", arr[i], b[i]);
+        }
+    }
+}
